@@ -1,0 +1,78 @@
+drop table tbcategoria;
+drop table tbfornecedor;
+drop table tbproduto;
+
+CREATE TABLE tbcategoria (
+pkcodcat integer not null ,
+nomecat varchar2(20),
+estoquemin integer,
+constraint tbcategoria_pk PRIMARY KEY(pkcodcat)
+);
+
+CREATE TABLE tbfornecedor (
+pkcodforn integer not null,
+nomeforn varchar2(20),
+estadoforn varchar2(2),
+constraint tbfornecedor_pk PRIMARY KEY(pkcodforn)
+);
+
+CREATE TABLE tbproduto (
+pkcodprod integer not null,
+nomeprod varchar2(20),
+valorvenda number(15,2),
+estoqueprod integer,
+fkcodcat integer,
+fkcodforn integer,
+constraint tbproduto_pk PRIMARY KEY(pkcodprod)
+);
+
+ALTER TABLE tbproduto ADD constraint prod_fkcodcat_fk FOREIGN KEY(fkcodcat) REFERENCES tbcategoria (pkcodcat);
+ALTER TABLE tbproduto ADD constraint prod_fkcodforn_fk FOREIGN KEY(fkcodforn) REFERENCES tbfornecedor (pkcodforn);
+
+insert into tbcategoria(pkcodcat,nomecat,estoquemin) values (1,'Bebida',12);
+insert into tbcategoria(pkcodcat,nomecat,estoquemin) values (2,'Enlatado',18);
+insert into tbcategoria(pkcodcat,nomecat,estoquemin) values (3,'Padaria',0);
+
+insert into tbfornecedor(pkcodforn,nomeforn,estadoforn) values (50,'Fornecedor X','SP');
+insert into tbfornecedor(pkcodforn,nomeforn,estadoforn) values (53,'Fornecedor Y','RS');
+insert into tbfornecedor(pkcodforn,nomeforn,estadoforn) values (54,'Fornecedor W','SP');
+insert into tbfornecedor(pkcodforn,nomeforn,estadoforn) values (57,'Fornecedor K','RS');
+insert into tbfornecedor(pkcodforn,nomeforn,estadoforn) values (58,'Fornecedor R','RJ');
+
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (102,'Ervilha Maravilhosa',1.34,20,2,53);
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (103,'Pao Frances',3.88,130,3,null);
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (104,'Refrigerante Gela',3.00,3,1,57);
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (105,'Cachaca Velho Novo',7.22,5,1,50);
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (106,'Margarina de Soja',4.77,50,3,50);
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (107,'Cerveja quero mais',1.90,18,1,57);
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (108,'Milho entalado',4.34,11,2,58);
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (109,'Bolo de Banana',4.73,3,3,50);
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (110,'Requeijao Cremoso',2.99,6,3,58);
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (111,'Destilado Forte',89.91,6,1,50);
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (112,'Vinho Sou Uva',15.70,21,1,53);
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (113,'Pepino em Conserva',4.99,56,2,53);
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (114,'Palmito da Floresta',7.55,7,2,57);
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (115,'Bolo de fuba',5.70,8,3,null);
+insert into tbproduto(pkcodprod,nomeprod,valorvenda,estoqueprod,fkcodcat,fkcodforn) values (116,'Refrigerante Gasosa',2.99,32,1,53);
+
+
+
+CREATE TABLE t1 (
+  c1 NUMBER,
+  c2 CHAR(1)
+);
+ 
+CREATE TABLE t2 (
+  c1 NUMBER,
+  c2 CHAR(1)
+);
+ 
+INSERT INTO t1 VALUES (1, 'a');
+INSERT INTO t1 VALUES (2, 'b');
+INSERT INTO t1 VALUES (3, 'c');
+ 
+INSERT INTO t2 VALUES (2, 'B');
+INSERT INTO t2 VALUES (3, 'C');
+INSERT INTO t2 VALUES (4, 'D');
+ 
+

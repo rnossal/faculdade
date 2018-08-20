@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Exercicio 6</title>
+	</head>
+	<body>
+		<!--
+		Uma empresa concederá um aumento de salário aos seus funcionários, variável de acordo com o cargo, conforme a tabela abaixo. Faça um programa que leia o salário e o cargo de um funcionário e calcule o novo salário. Se o cargo do funcionário não estiver na tabela, ele deverá, então, receber 3,5% de aumento. Mostre o salário antigo, o novo salário e a diferença.
+			Código 		Cargo 			Percentual de Aumento
+			101 		Gerente 		10%
+			102 		Engenheiro 		7,5%
+			103 		Técnico 		5,5%
+		-->
+		<form action="processa.php" method="post">
+			<p>Informe o salário e o cargo do funcionário (101 == Gerente, 102 == Engenheiro, 103 == Técnico):</p>
+			Salário:
+			<input type="text" name="salario">
+			<br />
+			Cargo:
+			<input type="text" name="cargo">
+			<br />
+			<input type="submit" name="name" value="Enviar">
+		</form>
+	</body>
+</html>

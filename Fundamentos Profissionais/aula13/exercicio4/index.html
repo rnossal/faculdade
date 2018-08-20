@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Exercicio 4</title>
+	</head>
+	<body>
+		<!--
+		Um usuário deseja um programa em que possa escolher o tipo de média a ser aplicada em suas 3 notas. Faça um programa que leia as notas, a opção escolhida pelo usuário, calcule e escreva a média. As opções devem conter as médias: aritmética e ponderada (pesos: 3,3,4).
+		-->
+		<form action="processa.php" method="post">
+			<p>Informe as três notas e o tipo de média a ser aplicada:</p>
+			Primeira nota:
+			<input type="text" name="nota1">
+			<br />
+			Segunda nota:
+			<input type="text" name="nota2">
+			<br />
+			Terceira nota:
+			<input type="text" name="nota3">
+			<br />
+			Tipo de média:
+			<br />
+			<input type="radio" name="media" value="arit" checked>
+			Aritmética
+			<br />
+			<input type="radio" name="media" value="pond">
+			Ponderada
+			<br />
+			<input type="submit" name="name" value="Enviar">
+		</form>
+	</body>
+</html>

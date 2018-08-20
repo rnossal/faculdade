@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Calculadora</title>
+	</head>
+	<body>
+		<!--
+		Deve-se implementar uma calculadora em PHP onde são informadas as operações básicas de adição, subtração, divisão e multiplicação para dois valores. Todas as informações solicitadas deve ser informada pelo usuário através de um formulário.
+		Ao final da operação a calculadora irá imprimir na tela no seguinte formato:
+		[ valor 1 ] [ operação ] [ valor 2 ] = [ resultado ]
+		-->
+		<form action="processa.php" method="post">
+			<p>Informe os valores e selecione a operação a ser aplicada:</p>
+			Primeiro valor:
+			<input type="text" name="val1">
+			<br />
+			Segundo valor:
+			<input type="text" name="val2">
+			<br />
+			Operação:
+			<select name="operacao">
+				<option value="adicao">Adição</option>
+				<option value="subtracao">Subtração</option>
+				<option value="divisao">Divisão</option>
+				<option value="multiplicacao">Multiplicação</option>
+			</select>
+			<br />
+			<input type="submit" name="name" value="Enviar">
+		</form>
+	</body>
+</html>

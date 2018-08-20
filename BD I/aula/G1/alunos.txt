@@ -1,0 +1,158 @@
+--
+-- create table professor
+--
+CREATE TABLE tbprofessor(
+	pkcodprof INTEGER NOT NULL,
+	nomeprof VARCHAR2(20)
+);
+--
+
+--
+-- create table relacao disciplina professor
+--
+CREATE TABLE tbreldiscprof(
+	fkcoddisc INTEGER NOT NULL,
+	fkcodprof INTEGER NOT NULL
+);
+--
+
+-- create table disciplina
+CREATE TABLE tbdisciplina(
+	pkcoddisc INTEGER NOT NULL,
+	nomedisc VARCHAR2(25),
+	fkcodcurso INTEGER
+);
+--
+
+--
+-- create table curso
+--
+CREATE TABLE tbcurso(
+	pkcodcurso INTEGER NOT NULL,
+	nomecurso VARCHAR2(20)
+);
+--
+
+--
+-- create table aluno
+--
+CREATE TABLE tbaluno(
+	pkcodalu INTEGER NOT NULL,
+	nomealu VARCHAR2(25),
+	datanascalu DATE
+);
+--
+
+--
+-- create table turma
+--
+CREATE TABLE tbturma(
+	pkcodturma INTEGER NOT NULL,
+	turno VARCHAR2(20),
+	fkcodprof INTEGER,
+	fkcoddisc INTEGER
+);
+--
+
+--
+-- create table aluno turma
+--
+CREATE TABLE tbalunoturma(
+	pkcodaluturma INTEGER NOT NULL,
+	fkcodturma INTEGER,
+	fkcodalu INTEGER,
+	g1 NUMERIC(10,2),
+	g2 NUMERIC(10,2),
+	subst NUMERIC(10,2) DEFAULT 0,
+	media NUMERIC(10,2) DEFAULT 0
+);
+
+
+--
+-- CREATE CONSTRAINTS PRIMARY KEY
+--
+ALTER TABLE tbprofessor ADD CONSTRAINTS tbprofessor_pkcodprof PRIMARY KEY (pkcodprof);
+ALTER TABLE tbreldiscprof ADD CONSTRAINTS tbrel_pkcoddisc_pkcodprof PRIMARY KEY (fkcoddisc,fkcodprof);
+ALTER TABLE tbdisciplina ADD CONSTRAINTS tbdisciplina_pkcoddisc PRIMARY KEY (pkcoddisc);
+ALTER TABLE tbcurso ADD CONSTRAINTS tbcurso_pkcodcurso PRIMARY KEY (pkcodcurso);
+ALTER TABLE tbaluno ADD CONSTRAINTS tbaluno_pkcodalu PRIMARY KEY (pkcodalu);
+ALTER TABLE tbturma ADD CONSTRAINTS tbturma_pkcodturma PRIMARY KEY (pkcodturma);
+ALTER TABLE tbalunoturma ADD CONSTRAINTS tbalunoturma_pkcodaluturma PRIMARY KEY (pkcodaluturma);
+
+--
+-- CREATE CONSTRAINTS FOREIGN KEY
+--
+ALTER TABLE tbreldiscprof ADD CONSTRAINTS tbreldiscprof_fkcodprof FOREIGN KEY (fkcodprof) REFERENCES tbprofessor(pkcodprof);
+ALTER TABLE tbreldiscprof ADD CONSTRAINTS tbreldiscprof_fkcoddisc FOREIGN KEY (fkcoddisc) REFERENCES tbdisciplina(pkcoddisc);
+ALTER TABLE tbdisciplina ADD CONSTRAINTS tbdisciplina_fkcodcurso FOREIGN KEY (fkcodcurso) REFERENCES tbcurso(pkcodcurso);
+ALTER TABLE tbturma ADD CONSTRAINTS tbturma_fkcodprof FOREIGN KEY (fkcodprof) REFERENCES tbprofessor(pkcodprof);
+ALTER TABLE tbturma ADD CONSTRAINTS tbturma_fkcoddisc FOREIGN KEY (fkcoddisc) REFERENCES tbdisciplina(pkcoddisc);
+ALTER TABLE tbalunoturma ADD CONSTRAINTS tbalunoturma_fkcodturma FOREIGN KEY (fkcodturma) REFERENCES tbturma(pkcodturma);
+ALTER TABLE tbalunoturma ADD CONSTRAINTS tbalunoturma_fkcodalu FOREIGN KEY (fkcodalu) REFERENCES tbaluno(pkcodalu);
+
+--
+-- INSERTs
+--
+INSERT INTO tbprofessor (pkcodprof,nomeprof) VALUES (70,'Bozo');
+INSERT INTO tbprofessor (pkcodprof,nomeprof) VALUES (80,'Fofao');
+INSERT INTO tbprofessor (pkcodprof,nomeprof) VALUES (90,'Eliana');
+INSERT INTO tbprofessor (pkcodprof,nomeprof) VALUES (100,'Gugu');
+INSERT INTO tbprofessor (pkcodprof,nomeprof) VALUES (101,'Faustao');
+
+INSERT INTO tbcurso (pkcodcurso,nomecurso) VALUES (5,'Informatica');
+INSERT INTO tbcurso (pkcodcurso,nomecurso) VALUES (6,'Danca');
+INSERT INTO tbcurso (pkcodcurso,nomecurso) VALUES (7,'Geografia');
+
+INSERT INTO tbaluno (pkcodalu,nomealu,datanascalu) VALUES (45,'Ana','10/06/1995');
+INSERT INTO tbaluno (pkcodalu,nomealu,datanascalu) VALUES (46,'Mario','21/07/1988');
+INSERT INTO tbaluno (pkcodalu,nomealu,datanascalu) VALUES (47,'Cari','12/05/1999');
+INSERT INTO tbaluno (pkcodalu,nomealu,datanascalu) VALUES (48,'Joana','13/04/1982');
+INSERT INTO tbaluno (pkcodalu,nomealu,datanascalu) VALUES (49,'Carla','06/03/1977');
+INSERT INTO tbaluno (pkcodalu,nomealu,datanascalu) VALUES (50,'Rosi','12/01/2000');
+INSERT INTO tbaluno (pkcodalu,nomealu,datanascalu) VALUES (51,'Fernanda','15/06/1999');
+INSERT INTO tbaluno (pkcodalu,nomealu,datanascalu) VALUES (52,'Amanda','13/09/1997');
+
+INSERT INTO tbdisciplina (pkcoddisc,nomedisc,fkcodcurso) VALUES (69,'Planalto',7);
+INSERT INTO tbdisciplina (pkcoddisc,nomedisc,fkcodcurso) VALUES (70,'Musica1',6);
+INSERT INTO tbdisciplina (pkcoddisc,nomedisc,fkcodcurso) VALUES (71,'Banco',5);
+INSERT INTO tbdisciplina (pkcoddisc,nomedisc,fkcodcurso) VALUES (72,'Planice',7);
+INSERT INTO tbdisciplina (pkcoddisc,nomedisc,fkcodcurso) VALUES (73,'Logica',5);
+INSERT INTO tbdisciplina (pkcoddisc,nomedisc,fkcodcurso) VALUES (74,'Engenha',5);
+
+INSERT INTO tbturma (pkcodturma,turno,fkcodprof,fkcoddisc) VALUES (207,'Tarde',80,74);
+INSERT INTO tbturma (pkcodturma,turno,fkcodprof,fkcoddisc) VALUES (208,'Manha',80,72);
+INSERT INTO tbturma (pkcodturma,turno,fkcodprof,fkcoddisc) VALUES (209,'Manha',100,70);
+INSERT INTO tbturma (pkcodturma,turno,fkcodprof,fkcoddisc) VALUES (210,'Noite',90,73);
+INSERT INTO tbturma (pkcodturma,turno,fkcodprof,fkcoddisc) VALUES (211,'Tarde',101,70);
+INSERT INTO tbturma (pkcodturma,turno,fkcodprof,fkcoddisc) VALUES (212,'Manha',80,69);
+INSERT INTO tbturma (pkcodturma,turno,fkcodprof,fkcoddisc) VALUES (213,'Rarde',90,73);
+
+INSERT INTO tbreldiscprof (fkcoddisc,fkcodprof) VALUES (69,70);
+INSERT INTO tbreldiscprof (fkcoddisc,fkcodprof) VALUES (69,80);
+INSERT INTO tbreldiscprof (fkcoddisc,fkcodprof) VALUES (70,100);
+INSERT INTO tbreldiscprof (fkcoddisc,fkcodprof) VALUES (71,70);
+INSERT INTO tbreldiscprof (fkcoddisc,fkcodprof) VALUES (72,80);
+INSERT INTO tbreldiscprof (fkcoddisc,fkcodprof) VALUES (70,101);
+INSERT INTO tbreldiscprof (fkcoddisc,fkcodprof) VALUES (73,90);
+INSERT INTO tbreldiscprof (fkcoddisc,fkcodprof) VALUES (74,80);
+
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (300,207,50,6.2,7.3);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (301,207,51,5.4,3.9);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (302,207,51,8.8,8.3);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (303,208,52,5.5,2.9);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (304,208,46,3.9,4.7);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (305,208,45,8.9,8.2);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (306,210,45,9.3,9.9);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (307,210,47,6.1,6.8);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (308,210,48,5.5,6.9);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (309,210,49,3.7,8.8);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (310,210,50,2.3,2.9);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (311,211,52,5.7,5.3);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (312,211,45,8.5,8.8);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (313,212,46,7.3,7.1);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (314,212,47,9.8,9.5);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (315,212,48,6.3,6.9);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (316,212,49,3.3,2.2);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (317,213,45,1.9,7.4);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (318,213,46,2.6,2.8);
+INSERT INTO tbalunoturma (pkcodaluturma,fkcodturma,fkcodalu,g1,g2) VALUES (319,213,47,3.9,9.1);

@@ -1,0 +1,30 @@
+-----------------Média------------------
+(G1 + (G2 * 2))/3
+
+========================================
+
+----------Bibliotecas padrão C----------
+<stdio.h> -> Entradas e saídas
+<stlib.h> -> Padrão da linguagem
+<conio.h> -> Manipulação de caracteres
+<string.h> -> Função de string
+<math.h> -> Função de matemática
+========================================
+
+#include nome_da_biblioteca.h -> Inclui uma biblioteca no arquivo
+	ex: #include <stlib.h>;
+
+printf("texto qualquer"); -> Só imprime o texto
+printf("texto qualquer + tipo_variavel", variavel); -> Imprime o texto e uma variável
+
+scanf("tipo_variavel", &nome_variavel);
+
+========================================
+para imprimir variável no printf:
+	inteiro -> %i
+	decimal -> %f
+	caracter -> %c
+========================================
+\n -> Quebra de linha
+\t -> Tabulação
+========================================

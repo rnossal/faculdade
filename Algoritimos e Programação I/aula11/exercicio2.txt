@@ -1,0 +1,33 @@
+A partir do programa descrito abaixo, execute o teste de mesa e apresente ao final o que será impresso na tela, bem como o calculo efetuado. Não use o compilador ou calculadora para esse exercício.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+main(){
+	int n;
+	float r,f=1,s=0,d=7;
+	for(n=5;n<=d;n++){
+		if(n%2==0){
+			r=sqrt(n);
+			printf("%i - %.2f\n",n,r);
+		}
+		r=pow(n,2);
+		printf("%i - %.2f\n",n,r);
+		f=f*n;
+		printf("%i - %.2f\n",n,f);
+		s=s+r;
+	}
+	printf("Total: %.2f\n",s);
+	system("pause");
+}
+
+===================== RESULTADO IMPRESSO ====================
+
+Valor: n=5, r=n*n	|	Conta: 5*5=25				|	Imprime: 5 - 25.00
+Valor: n=5, f=f*n	|	Conta: 1*5=5				|	Imprime: 5 - 5.00
+Valor: n=6, r=√n	|	Conta: √6=2.45				|	Imprime: 6 - 2.45
+Valor: n=6, r=n*n	|	Conta: 6*6=36				|	Imprime: 6 - 36.00
+Valor: n=6, f=f*n	|	Conta: 5*6=30				|	Imprime: 6 - 30.00
+Valor: n=7, r=n*n	|	Conta: 7*7=49				|	Imprime: 7 - 49.00
+Valor: n=7, f=f*n	|	Conta: 30*7=210				|	Imprime: 7 - 210.00
+Valor: s=s+r		|	Conta: 0+25=25+36=61+49=110	|	Imprime: Total: 110.00

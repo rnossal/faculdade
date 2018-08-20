@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Exercício 3</title>
+		<style type="text/css">
+			.left {
+				float: left;
+			}
+			#sub {
+				padding-top: 10px;
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+		Criar 2 arrays através de uma página HTML com 5 números inteiros cada. Gerar e imprimir um array com:
+			- Um array com todos os números comuns entre eles.
+			- Um array todos os números diferentes entre eles.
+			- Um array com todos os números pares dos dois arrays sem repetição
+		-->
+		<form action="processa.php" method="post">
+			<p>Informe os 10 valores divididos entre os dois arrays:</p>
+			<div class="left">
+				<h2>Array 1</h2>
+				Informe o valor 1:
+				<input type="number" name="arr1-1">
+				<br />
+				Informe o valor 2:
+				<input type="number" name="arr1-2">
+				<br />
+				Informe o valor 3:
+				<input type="number" name="arr1-3">
+				<br />
+				Informe o valor 4:
+				<input type="number" name="arr1-4">
+				<br />
+				Informe o valor 5:
+				<input type="number" name="arr1-5">
+			</div>
+			<div class="left">
+				<h2>Array 2</h2>
+				Informe o valor 1:
+				<input type="number" name="arr2-1">
+				<br />
+				Informe o valor 2:
+				<input type="number" name="arr2-2">
+				<br />
+				Informe o valor 3:
+				<input type="number" name="arr2-3">
+				<br />
+				Informe o valor 4:
+				<input type="number" name="arr2-4">
+				<br />
+				Informe o valor 5:
+				<input type="number" name="arr2-5">
+			</div>
+			<div id="sub">
+				<input  type="submit" name="name" value="Enviar">
+			</div>
+		</form>
+	</body>
+</html>

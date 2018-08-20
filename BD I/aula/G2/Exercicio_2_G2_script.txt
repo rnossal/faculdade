@@ -1,0 +1,142 @@
+drop table tbServOrc;
+drop table tbrelprodorc;
+drop table tborcamento;
+drop table tbproduto;
+drop table tbcliente;
+drop table tbveiculo;
+
+
+CREATE TABLE tbcliente (
+  pkcodcli integer not null,
+  nomecli varchar(30) DEFAULT '',
+  endcli varchar(40) DEFAULT ''
+);
+
+
+INSERT INTO tbcliente VALUES (1,'Antonio Mileno','Rua de Teste, 50');
+INSERT INTO tbcliente VALUES (2,'carlos Manoel','Av da silva, 77');
+INSERT INTO tbcliente VALUES (3,'Joao Ana Silva','Rua de Teste, 33');
+INSERT INTO tbcliente VALUES (4,'Ana Carolina da Silva','Rua agora, 22');
+INSERT INTO tbcliente VALUES (5,'Beatriz Souza','Av. Funcionando , 66');
+
+CREATE TABLE tborcamento (
+  pkcodorc integer not null,
+  placa varchar(8) DEFAULT NULL,
+  fkcodcli integer DEFAULT NULL,
+  dataorc date DEFAULT NULL
+); 
+
+INSERT INTO tborcamento VALUES (1,'BOM-7453',1,'15/06/2011');
+INSERT INTO tborcamento VALUES (2,'HJB-8822',3,'16/06/2011');
+INSERT INTO tborcamento VALUES (3,'IHK-3282',NULL,'16/06/2011');
+INSERT INTO tborcamento VALUES (4,'IJB-2011',5,'15/06/2011');
+INSERT INTO tborcamento VALUES (5,'IOI-5002',1,'08/04/2011');
+INSERT INTO tborcamento VALUES (6,'HJB-8822',3,'15/06/2011');
+INSERT INTO tborcamento VALUES (7,'IJB-2011',4,'16/06/2011');
+INSERT INTO tborcamento VALUES (8,'IOI-5002',2,'01/01/2011');
+INSERT INTO tborcamento VALUES (9,'IHD-3290',NULL,'15/06/2011');
+INSERT INTO tborcamento VALUES (10,'JKM-3077',3,'15/06/2011');
+INSERT INTO tborcamento VALUES (11,'BOM-7453',2,'05/01/2011');
+INSERT INTO tborcamento VALUES (12,'KML-2645',4,'18/06/2011');
+
+
+
+
+CREATE TABLE tbproduto (
+  pkcodprod integer not null,
+  nomeprod varchar(20) DEFAULT '',
+  precoprod numeric(10,2) 
+); 
+
+
+INSERT INTO tbproduto VALUES (1,'Magueira',2.5);
+INSERT INTO tbproduto VALUES (2,'Pastilha de freio',10.5);
+INSERT INTO tbproduto VALUES (3,'Rolamento Dianteiro',10);
+INSERT INTO tbproduto VALUES (4,'Oleo Lubricante',7.85);
+INSERT INTO tbproduto VALUES (5,'Cabo do Acelerador',12.8);
+INSERT INTO tbproduto VALUES (6,'Disco de Embreagem',120.2);
+INSERT INTO tbproduto VALUES (7,'Rolamento Traseiro',2.85);
+
+
+
+CREATE TABLE tbrelprodorc (
+  pkcodrel integer not null,
+  fkcodprod integer ,
+  fkcodorc integer ,
+  quant integer ,
+  valorunit decimal(10,2)
+); 
+
+
+INSERT INTO tbrelprodorc VALUES (1,4,1,1,7.5);
+INSERT INTO tbrelprodorc VALUES (2,6,2,1,3.52);
+INSERT INTO tbrelprodorc VALUES (3,5,2,1,1.85);
+INSERT INTO tbrelprodorc VALUES (4,2,2,3,7.5);
+INSERT INTO tbrelprodorc VALUES (5,3,2,1,9.8);
+INSERT INTO tbrelprodorc VALUES (6,2,3,2,6.88);
+INSERT INTO tbrelprodorc VALUES (7,4,3,1,1.85);
+INSERT INTO tbrelprodorc VALUES (8,5,4,2,2.8);
+INSERT INTO tbrelprodorc VALUES (9,6,4,1,120.5);
+INSERT INTO tbrelprodorc VALUES (10,7,5,1,80.4);
+INSERT INTO tbrelprodorc VALUES (11,6,6,1,74.41);
+INSERT INTO tbrelprodorc VALUES (12,4,6,1,21.5);
+INSERT INTO tbrelprodorc VALUES (13,2,6,2,3.85);
+INSERT INTO tbrelprodorc VALUES (14,1,6,1,1.99);
+INSERT INTO tbrelprodorc VALUES (15,3,7,1,87.52);
+INSERT INTO tbrelprodorc VALUES (16,2,7,1,99.4);
+INSERT INTO tbrelprodorc VALUES (17,2,7,2,71.5);
+INSERT INTO tbrelprodorc VALUES (18,7,8,1,11.5);
+INSERT INTO tbrelprodorc VALUES (19,5,8,2,12.9);
+INSERT INTO tbrelprodorc VALUES (20,7,9,1,40.1);
+INSERT INTO tbrelprodorc VALUES (21,6,9,3,20);
+INSERT INTO tbrelprodorc VALUES (22,4,9,1,44.14);
+INSERT INTO tbrelprodorc VALUES (23,1,9,1,7.14);
+INSERT INTO tbrelprodorc VALUES (24,2,9,1,3.99);
+INSERT INTO tbrelprodorc VALUES (25,2,10,2,1.84);
+INSERT INTO tbrelprodorc VALUES (26,4,10,1,65.55);
+INSERT INTO tbrelprodorc VALUES (27,1,11,1,25.5);
+INSERT INTO tbrelprodorc VALUES (28,4,11,2,200);
+INSERT INTO tbrelprodorc VALUES (29,7,11,1,452.41);
+INSERT INTO tbrelprodorc VALUES (30,4,12,1,2.8);
+
+
+CREATE TABLE tbservorc (
+  pkcodorc integer not null,
+  descserv varchar(20) DEFAULT NULL,
+  quant integer ,
+  valorunit decimal(10,2),
+  fkcodorc integer
+) ;
+
+
+INSERT INTO tbservorc VALUES (1,'Limpesa de Bico',1,20,1);
+INSERT INTO tbservorc VALUES (2,'Mao de obra',2,25.33,3);
+INSERT INTO tbservorc VALUES (3,'troca da mangueira',1,15.88,4);
+INSERT INTO tbservorc VALUES (4,'Limpesa de Bico',1,20,5);
+INSERT INTO tbservorc VALUES (5,'Mao de obra',2,25.33,11);
+INSERT INTO tbservorc VALUES (6,'troca da mangueira',1,15.88,11);
+INSERT INTO tbservorc VALUES (8,'Mao de obra',3,25.33,5);
+INSERT INTO tbservorc VALUES (9,'Mao de obra',1,25.33,6);
+INSERT INTO tbservorc VALUES (10,'Mao de obra',1,25.33,7);
+INSERT INTO tbservorc VALUES (11,'troca da mangueira',1,15.88,10);
+INSERT INTO tbservorc VALUES (12,'Mao de obra',2,25.33,10);
+INSERT INTO tbservorc VALUES (13,'Limpesa de Bico',1,20,10);
+INSERT INTO tbservorc VALUES (14,'Mao de obra',1,25.33,7);
+INSERT INTO tbservorc VALUES (15,'Limpesa de Bico',2,20,7);
+INSERT INTO tbservorc VALUES (16,'troca da mangueira',1,15.88,8);
+INSERT INTO tbservorc VALUES (17,'Mao de obra',1,25.33,9);
+
+CREATE TABLE tbveiculo (
+  placa varchar(8) NOT NULL ,
+  nomevei varchar(20) DEFAULT '',
+  anovei  integer 
+); 
+
+INSERT INTO tbveiculo VALUES ('BOM-7453','Fusca',1988);
+INSERT INTO tbveiculo VALUES ('HJB-8822','Brasilia',1977);
+INSERT INTO tbveiculo VALUES ('IHD-3290','Kombi',2000);
+INSERT INTO tbveiculo VALUES ('IHK-3282','Brasilia',1976);
+INSERT INTO tbveiculo VALUES ('IJB-2011','Brasilia',1999);
+INSERT INTO tbveiculo VALUES ('IOI-5002','Kombi',1998);
+INSERT INTO tbveiculo VALUES ('JKM-3077','Fusca',1980);
+INSERT INTO tbveiculo VALUES ('KML-2645','Kombi',1999);

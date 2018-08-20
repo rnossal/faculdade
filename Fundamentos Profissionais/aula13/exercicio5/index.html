@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Exercicio 5</title>
+	</head>
+	<body>
+		<!--
+		Um vendedor necessita de um programa que calcule o preço total devido por um cliente. O algoritmo deve receber o código de um produto e a quantidade comprada e calcular o preço total, usando a tabela abaixo:
+			Código do Produto 		Preço unitário
+			1001 				5,32
+			1324 				6,45
+			6524 				2,37
+			1987 				5,32
+			7623 				6,45
+		-->
+		<form action="processa.php" method="post">
+			<p>Informe o código do produto e sua quantidade para calcular o total (códigos: 1001, 1324, 6524, 1987, 7623):</p>
+			Código do produto:
+			<input type="text" name="cod">
+			<br />
+			Quantidade:
+			<input type="text" name="qtd">
+			<br />
+			<input type="submit" name="name" value="Enviar">
+		</form>
+	</body>
+</html>

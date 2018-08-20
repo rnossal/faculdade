@@ -1,0 +1,18 @@
+Faça o teste de mesa analisando o programa abaixo e indique o que ele escreve na tela. 
+#include <stdio.h>
+main(){
+	int num=1, val=2, cont=4;
+	while (cont<10){
+		cont=cont+2;
+		num=1+2*val-num;
+		val++;
+		printf("%i %i %i\n",cont,val,num);
+	}
+}
+
+Resultado:
+
+num		val		cont	Impressão	
+4		3		6		6 3 4
+3		4		8		8 4 3
+6		5		10		10 5 6
