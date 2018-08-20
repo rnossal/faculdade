@@ -1,0 +1,15 @@
+Objetivo: manipulação de imagens digitais
+
+Técnicas: conversão de imagens coloridas para monocromáticas através das técnicas de limiar, halftone e tons de cinza.
+
+Passos:
+
+A partir o Arquivo TarefaCG.zip executar o aplicativo "projeto" que mostrará a imagem de uma águia colorida e preto e branco.
+
+Fazer as modificações necessárias no arquivo ImageTest.cpp para ler a imagem EAGLE,bmp, que é colorida, e mostrá-la preto e branco também. Ou criar um programa que faça isso.
+
+Dentro do arquivo ImageTest.cpp tem 4 tarefas, onde as duas primeiras servem para testar o limiar e as outras duas fazem parte da atividade avaliativa.
+
+Bom trabalho!
+
+Berg.
