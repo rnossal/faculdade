@@ -15,34 +15,23 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="test1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test4.cpp">
+    <ClCompile Include="test6.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="test5.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Curves.cpp">
+    <ClCompile Include="test4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test6.cpp">
+    <ClCompile Include="test3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="points.dat" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Curves.h">
+    <ClCompile Include="test2.cpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
+    </ClCompile>
+    <ClCompile Include="test1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

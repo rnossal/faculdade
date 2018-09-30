@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{DA49529B-EBB6-4280-B089-C78E02E11BFD}</ProjectGuid>
+    <ProjectGuid>{AD2FE9A6-5348-4084-BD80-FC8E4530841D}</ProjectGuid>
     <RootNamespace>CurveEditor</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

@@ -1,4 +1,4 @@
-ï»¿///*
+///*
 //*   Copyright (C) 2008, 2008 Rafael Siqueira Telles Vieira
 //*
 //*   This program is free software; you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 //float p[4][2];
 //int indice;
 //
-//// FunÃ§Ã£o callback chamada para gerenciar eventos do mouse
+//// Função callback chamada para gerenciar eventos do mouse
 //void Inicia()
 //{
 //
@@ -131,7 +131,7 @@
 //    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 //    glutInitWindowSize(ALTURA, LARGURA);
 //    glutInitWindowPosition(20, 20);
-//    glutCreateWindow("Desenhando uma curva de BÃ©zier");
+//    glutCreateWindow("Desenhando uma curva de Bézier");
 //    glutDisplayFunc(exibe);
 //    glutMouseFunc(escolha);
 //    glutMotionFunc(captura);

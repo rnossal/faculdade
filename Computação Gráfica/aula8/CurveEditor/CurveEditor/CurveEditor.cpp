@@ -39,7 +39,7 @@ void drawBezier() {
 
 	glBegin(GL_POINTS);
 	for (t = 0.f; t <= 1.f; t += 0.0002) {
-		
+
 		glVertex2d(
 			calcCubicBezier(t, dots[0].point.x, dots[1].point.x, dots[2].point.x, dots[3].point.x),
 			calcCubicBezier(t, dots[0].point.y, dots[1].point.y, dots[2].point.y, dots[3].point.y)

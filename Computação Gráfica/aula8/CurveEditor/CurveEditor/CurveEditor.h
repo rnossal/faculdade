@@ -15,30 +15,7 @@ typedef struct Point
 
 typedef struct Dot
 {
-	Dot *prev;
-	Dot *next;
 	Point point;
-};
-
-typedef struct DotList
-{
-	Dot *start;
-	Dot *end;
-	int length;
-};
-
-typedef struct Curve
-{
-	Curve *prev;
-	Curve *next;
-	Dot *start;
-};
-
-typedef struct CurveList
-{
-	Curve *start;
-	Curve *end;
-	int length;
 };
 
 // ==================== Handlers da janela. ====================

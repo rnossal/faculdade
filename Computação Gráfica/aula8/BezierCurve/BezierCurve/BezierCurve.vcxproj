@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{215ED86D-BC73-44C9-B6A7-7F05CB89A2CC}</ProjectGuid>
+    <ProjectGuid>{1B9B8C07-9949-4723-ABCB-939C3E0FA10A}</ProjectGuid>
     <RootNamespace>BezierCurve</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -115,19 +115,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Curves.cpp" />
     <ClCompile Include="test1.cpp" />
     <ClCompile Include="test2.cpp" />
     <ClCompile Include="test3.cpp" />
     <ClCompile Include="test4.cpp" />
     <ClCompile Include="test5.cpp" />
     <ClCompile Include="test6.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="points.dat" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Curves.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

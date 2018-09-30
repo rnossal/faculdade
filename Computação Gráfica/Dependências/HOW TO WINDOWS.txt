@@ -1,0 +1,11 @@
+- Arquivos .lib
+	C:\Program Files (x86)\Windows Kits\10\Lib\10.0.17134.0\um\ (dentro de cada uma das pastas e nas variações de versão)
+
+- Arquivos .dll
+	C:\Windows\System32
+	C:\Windows\SysWOW64
+
+- Arquivos .h
+	C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um (para cada uma das versões)
+
+As versões se dão por versão de SO (pasta após "Windows Kits") e por versão de framework (ex: 10.0.17134.0)
