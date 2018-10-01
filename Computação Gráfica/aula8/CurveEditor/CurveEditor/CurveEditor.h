@@ -5,25 +5,26 @@
 #define DOT_CIRCLE_RADIUS (DOT_MIDDLE_RADIUS + 3)
 #define DOT_CIRCLE_WIDTH 2
 #define DOT_RADIUS (DOT_CIRCLE_RADIUS + (DOT_CIRCLE_WIDTH / 2))
-#define INITIAL_ALOC 20
+#define MAX_CURVES 2000
+#define MAX_DOT_PER_CURVE 4
 
 // ======================== Estruturas =========================
 typedef struct Point
 {
-	float x;
-	float y;
+    double x;
+    double y;
 } Point;
 
 typedef struct Dot
 {
-	Point location;
+    Point location;
 } Dot;
 
 typedef struct Curve
 {
-	Dot *dots;
-	int dotsLimit;
-	int currentDot;
+    Dot *dots;
+    int dotsLimit;
+    int currentDot;
 
 } Curve;
 
@@ -31,6 +32,7 @@ typedef struct Curve
 void initScreen();
 void draw();
 void mouse(int button, int state, int x, int y);
+void mouseMove(int x, int y);
 void reshape(int w, int h);
 
 // ===================== Funções de apoio. =====================
@@ -41,7 +43,7 @@ void drawDotConnectionLine(Curve *curve);
 void drawDotConnectionLines();
 float getFloatColor(int value);
 int calculeBinomialCoefficient(int n, int k);
-Point calculePointBezier(float t, Curve *curve);
+Point calculePointBezier(double t, Curve *curve);
 void drawBezier(Curve *curve);
 void drawDotConnectionBeziers();
 float calcCubicBezier(float t, float point0, float point1, float point2, float point3);
