@@ -18,6 +18,13 @@ typedef struct Point
 typedef struct Dot
 {
     Point location;
+    int isHit(int x, int y) {
+        if ((location.x + DOT_RADIUS) >= x && (location.x - DOT_RADIUS) <= x &&
+            (location.y + DOT_RADIUS) >= y && (location.y - DOT_RADIUS) <= y) {
+            return 1;
+        }
+        return 0;
+    }
 } Dot;
 
 typedef struct Curve

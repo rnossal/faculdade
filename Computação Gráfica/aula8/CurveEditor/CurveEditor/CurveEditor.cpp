@@ -10,6 +10,9 @@
 #include "CurveEditor.h"
 
 // ========== Variáveis globais. ===========
+int pressedButton = -1;
+int dragging = 0;
+Dot *draggingDot = NULL;
 Curve *curves = NULL;
 int curvesLimit = MAX_CURVES;
 int currentCurve = 0;
@@ -29,11 +32,12 @@ void draw() {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glClear(GL_COLOR_BUFFER_BIT);
-    glFlush();
 
     drawDotConnectionLines();
     drawDots();
     drawDotConnectionBeziers();
+
+    glFlush();
 }
 /**
     Função que cuida das capturas de mouse.
@@ -44,22 +48,33 @@ void draw() {
 void mouse(int button, int state, int x, int y) {
     int i;
 
-    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-        if (curves[currentCurve].currentDot + 1 >= MAX_DOT_PER_CURVE) {
-            currentCurve++;
+    pressedButton = button;
 
-            curves[currentCurve].dots = (Dot *)malloc(MAX_DOT_PER_CURVE * sizeof(Dot));
-            for (i = 0; i < MAX_DOT_PER_CURVE; i++) {
-                curves[currentCurve].dots[i].location.x = 0;
-                curves[currentCurve].dots[i].location.y = 0;
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
+        if (!dragging) {
+            if (curves[currentCurve].currentDot + 1 >= MAX_DOT_PER_CURVE) {
+                currentCurve++;
+
+                curves[currentCurve].dots = (Dot *)malloc(MAX_DOT_PER_CURVE * sizeof(Dot));
+                for (i = 0; i < MAX_DOT_PER_CURVE; i++) {
+                    curves[currentCurve].dots[i].location.x = 0;
+                    curves[currentCurve].dots[i].location.y = 0;
+                }
             }
+
+            curves[currentCurve].currentDot++;
+            curves[currentCurve].dots[curves[currentCurve].currentDot].location.x = x;
+            curves[currentCurve].dots[curves[currentCurve].currentDot].location.y = y;
+
+            glutPostRedisplay();
         }
 
-        curves[currentCurve].currentDot++;
-        curves[currentCurve].dots[curves[currentCurve].currentDot].location.x = x;
-        curves[currentCurve].dots[curves[currentCurve].currentDot].location.y = y;
+        dragging = 0;
+        draggingDot = NULL;
+    }
 
-        glutPostRedisplay();
+    if (state == GLUT_UP) {
+        pressedButton = -1;
     }
 }
 /**
@@ -68,7 +83,25 @@ void mouse(int button, int state, int x, int y) {
     @param y Posição y do cursor.
 */
 void mouseMove(int x, int y) {
+    if (dragging) {
+        draggingDot->location.x = x;
+        draggingDot->location.y = y;
 
+        glutPostRedisplay();
+    }
+    else {
+        if (pressedButton == GLUT_LEFT_BUTTON) {
+            int i, j;
+            for (i = 0; i <= currentCurve; i++) {
+                for (j = 0; j <= curves[i].currentDot; j++) {
+                    if (curves[i].dots[j].isHit(x, y)) {
+                        dragging = 1;
+                        draggingDot = &curves[i].dots[j];
+                    }
+                }
+            }
+        }
+    }
 };
 /**
     Função para quando for a janela for "remodelada" (mudar de tamanho).
@@ -127,8 +160,6 @@ void drawDot(Dot *dot) {
         glVertex2f(dot->location.x + (DOT_CIRCLE_RADIUS * cos(i * 2.f * M_PI / numberLines)), dot->location.y + (DOT_CIRCLE_RADIUS * sin(i * 2.f * M_PI / numberLines)));
     }
     glEnd();
-
-    glFlush();
 }
 /**
     Desenha todos os pontos que estão armazenados no programa.
@@ -157,8 +188,6 @@ void drawDotConnectionLine(Curve *curve) {
     }
 
     glEnd();
-
-    glFlush();
 }
 /**
     Desenha todas as linhas de conexão de todas as curvas que estão armazenados no programa.
@@ -232,8 +261,6 @@ void drawBezier(Curve *curve) {
         }
         glEnd();
     }
-
-    glFlush();
 }
 /**
     Desenha todas as curvar Bezier de todas as curvas que estão armazenados no programa.
