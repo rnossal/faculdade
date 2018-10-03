@@ -46,7 +46,7 @@ void draw() {
     @param y Posição y do cursor.
 */
 void mouse(int button, int state, int x, int y) {
-    int i;
+    int i, j, k;
 
     pressedButton = button;
 
@@ -71,6 +71,21 @@ void mouse(int button, int state, int x, int y) {
 
         dragging = 0;
         draggingDot = NULL;
+    }
+    else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) {
+        for (i = 0; i <= currentCurve; i++) {
+            for (j = 0; j <= curves[i].currentDot; j++) {
+                if (curves[i].dots[j].isHit(x, y)) {
+                    for (k = j; k < curves[i].currentDot; k++) {
+                        curves[i].dots[k] = curves[i].dots[k + 1];
+                    }
+                    curves[i].currentDot--;
+                    break;
+                }
+            }
+        }
+
+        glutPostRedisplay();
     }
 
     if (state == GLUT_UP) {

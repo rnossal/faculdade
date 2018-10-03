@@ -5,7 +5,7 @@
 #define DOT_CIRCLE_RADIUS (DOT_MIDDLE_RADIUS + 3)
 #define DOT_CIRCLE_WIDTH 2
 #define DOT_RADIUS (DOT_CIRCLE_RADIUS + (DOT_CIRCLE_WIDTH / 2))
-#define MAX_CURVES 2000
+#define MAX_CURVES 20000
 #define MAX_DOT_PER_CURVE 4
 
 // ======================== Estruturas =========================
