@@ -1,0 +1,38 @@
+#VRML V2.0 utf8  
+
+# Criado Rafael Nossal
+
+Viewpoint {
+    position 0 3 15
+    orientation 0 0 1 0
+}
+
+Group {
+    children [
+        Shape {
+            appearance Appearance {
+                material Material {
+                    diffuseColor 0.364705882 0.250980392 0.215686275
+                }
+            }
+            geometry Cylinder {
+                radius 0.5
+                height 3
+            }
+        },
+        Transform {
+            translation 0 5 0
+            children Shape {
+                appearance Appearance {
+                    material Material {
+                        diffuseColor 0.180392157 0.490196078 0.196078431
+                    }
+                }
+                geometry Cone {
+                    height 7
+                    bottomRadius 3
+                }
+            }
+        }
+    ]
+}

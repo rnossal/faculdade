@@ -1,0 +1,37 @@
+#VRML V2.0 utf8  
+# The VRML 2.0 Sourcebook
+# Copyright (c) 1997
+# Andrea L. Ames, David R. Nadeau, 
+# and John L. Moreland
+# A brown hut
+
+# Alterado por Rafael Nossal
+
+Group {
+    children [
+        # Draw the hut walls
+        Shape {
+            appearance DEF Brown Appearance {
+                material Material {
+                    diffuseColor 0.00784313725 0.533333333 0.819607843
+                }
+            }
+            geometry Cylinder {
+                height 3.0
+                radius 3.0
+            }
+        },
+        # Draw the hut roof
+        Transform {
+            translation 0.0 3.0 0.0
+            children Shape {
+                appearance USE Brown
+                geometry Sphere {
+                     radius 3.5
+#                    height 3.5
+#                    bottomRadius 2.5
+                }
+            }
+        }
+    ]
+}
