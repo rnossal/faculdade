@@ -1,0 +1,5 @@
+- cena.wrl é o arquivo principal
+- VRML não suporta a transmissão de sombra de um sólido para o outro como no exemplo
+- Texturas aleatórias
+- Uma única fonte de luz usada
+- Cilindo não suporta ser oco
